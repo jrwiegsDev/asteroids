@@ -8,4 +8,5 @@ services:
     branch: main
     buildCommand: pip install pygbag==0.9.3 && python -m pygbag --build .
     staticPublishPath: ./build/web
-    autoDeployTrigger: commit
+    # Deploy only after the GitHub Actions CI check (.github/workflows/ci.yml) passes
+    autoDeployTrigger: checksPass

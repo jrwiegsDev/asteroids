@@ -24,7 +24,7 @@ This started as the guided Asteroids project from [Boot.dev](https://www.boot.de
 - **Screen wrap** for the ship, arrow-key controls, and an on-screen controls hint.
 - **Off-screen cleanup:** shots and asteroids that leave the screen are removed, so the sprite groups don't grow forever.
 - **A browser build:** the main loop is `async` and yields to the browser once per frame, which pygbag needs to run the game as WebAssembly.
-- **CI/CD:** GitHub Actions checks that every push compiles and builds. Render rebuilds and deploys the static site on every push to `main`.
+- **CI/CD:** GitHub Actions checks that every push compiles and builds. Render deploys the static site only after that check passes on `main`.
 
 ## Run it locally
 
@@ -38,8 +38,8 @@ uv run pygbag .         # browser build, served at http://localhost:8000
 ## How the browser build and deploy work
 
 1. `pygbag --build .` packages the Python source into `build/web/` (an `index.html` plus a small archive of the game code). When the page loads, it downloads a WebAssembly build of CPython and pygame and runs `main.py` in the browser tab. `pygbag.ini` keeps the local `.venv` out of that archive.
-2. On every push, [GitHub Actions](.github/workflows/ci.yml) byte-compiles the code and runs the pygbag build, so a broken build fails in CI.
-3. [Render](render.yaml) hosts `build/web/` as a static site and rebuilds it automatically on every push to `main`.
+2. On every push, [GitHub Actions](.github/workflows/ci.yml) byte-compiles the code and runs the pygbag build, so a broken build fails in CI and never reaches the live site.
+3. [Render](render.yaml) hosts `build/web/` as a static site and rebuilds it automatically once CI passes on `main` (`autoDeployTrigger: checksPass`).
 
 ## Roadmap
 
