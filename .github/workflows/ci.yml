@@ -22,4 +22,4 @@ jobs:
         run: uv run python -m compileall -q -x '/\.venv/' .
 
       - name: Build browser version with pygbag
-        run: uv run pygbag --build .
+        run: uv run pygbag --title Asteroids --build .
