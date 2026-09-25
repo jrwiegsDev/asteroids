@@ -1,4 +1,5 @@
 import pygame
+from constants import OFFSCREEN_MARGIN, SCREEN_HEIGHT, SCREEN_WIDTH
 
 # Base class for game objects
 class CircleShape(pygame.sprite.Sprite):
@@ -26,3 +27,11 @@ class CircleShape(pygame.sprite.Sprite):
     def collides_with(self, other: "CircleShape") -> bool:
         distance = self.position.distance_to(other.position)
         return distance <= (self.radius + other.radius)
+
+    def is_offscreen(self) -> bool:
+        return (
+            self.position.x < -OFFSCREEN_MARGIN
+            or self.position.x > SCREEN_WIDTH + OFFSCREEN_MARGIN
+            or self.position.y < -OFFSCREEN_MARGIN
+            or self.position.y > SCREEN_HEIGHT + OFFSCREEN_MARGIN
+        )

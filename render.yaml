@@ -1,0 +1,11 @@
+# Render Blueprint for the browser build of the game.
+# pygbag compiles the game to WebAssembly; the output in build/web is plain static files.
+services:
+  - type: web
+    runtime: static
+    name: asteroids
+    repo: https://github.com/jrwiegsDev/asteroids
+    branch: main
+    buildCommand: pip install pygbag==0.9.3 && python -m pygbag --build .
+    staticPublishPath: ./build/web
+    autoDeployTrigger: commit

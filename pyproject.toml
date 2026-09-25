@@ -1,9 +1,14 @@
 [project]
 name = "asteroids"
 version = "0.1.0"
-description = "Add your description here"
+description = "Classic Asteroids arcade game in Python + pygame, playable in the browser via WebAssembly (pygbag)"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "pygame==2.6.1",
+]
+
+[dependency-groups]
+dev = [
+    "pygbag==0.9.3",
 ]

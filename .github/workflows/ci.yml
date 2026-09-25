@@ -1,0 +1,25 @@
+# CI only: make sure the game compiles and the browser build succeeds.
+# Hosting and deploys are handled by Render (see render.yaml).
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install dependencies
+        run: uv sync --locked
+
+      - name: Check that the game compiles
+        run: uv run python -m compileall -q -x '/\.venv/' .
+
+      - name: Build browser version with pygbag
+        run: uv run pygbag --build .

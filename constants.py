@@ -11,3 +11,12 @@ ASTEROID_MAX_RADIUS = ASTEROID_MIN_RADIUS * ASTEROID_KINDS
 SHOT_RADIUS = 5
 PLAYER_SHOOT_SPEED = 500
 PLAYER_SHOOT_COOLDOWN_SECONDS = 0.3
+PLAYER_LIVES = 3
+PLAYER_RESPAWN_INVULNERABLE_SECONDS = 2.0
+
+# Points per asteroid, keyed by kind (1 = smallest). Smaller asteroids are worth more.
+ASTEROID_SCORES = {1: 100, 2: 50, 3: 20}
+
+# How far past the screen edge a shot or asteroid can drift before it's removed.
+# Must be larger than ASTEROID_MAX_RADIUS, since asteroids spawn that far off-screen.
+OFFSCREEN_MARGIN = ASTEROID_MAX_RADIUS * 2
