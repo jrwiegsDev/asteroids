@@ -2,7 +2,7 @@
 
 The classic arcade game, written in Python with [pygame](https://www.pygame.org/) and compiled to WebAssembly with [pygbag](https://pypi.org/project/pygbag/) so it runs in the browser with nothing to install.
 
-**▶ Play it in your browser:** RENDER_URL_TODO
+**▶ Play it in your browser:** https://asteroids-1nst.onrender.com
 
 ![Asteroids gameplay](https://raw.githubusercontent.com/jrwiegsDev/portfolio-site/main/public/asteroids.png)
 
